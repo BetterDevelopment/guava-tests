@@ -10,7 +10,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>pl.wp.guava-tests</groupId>
+    <groupId>pl.wp.guava-tests.reflection</groupId>
     <artifactId>reflection</artifactId>
     <version>${parent.version}</version>
     <packaging>pom</packaging>
