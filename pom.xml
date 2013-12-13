@@ -43,10 +43,17 @@
     </dependencies>
 
     <modules>
-        <module>batch</module>
         <module>base</module>
-        <module>optional</module>
-        <module>preconditions</module>
+        <module>collections</module>
+        <module>caches</module>
+        <module>concurrency</module>
+        <module>strings</module>
+        <module>primitives</module>
+        <module>io</module>
+        <module>hashing</module>
+        <module>eventbus</module>
+        <module>math</module>
+        <module>reflection</module>
     </modules>
 
     <prerequisites>

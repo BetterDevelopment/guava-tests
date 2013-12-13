@@ -10,17 +10,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>pl.wp.guava-tests.base</groupId>
-    <artifactId>base</artifactId>
+    <groupId>pl.wp.guava-tests</groupId>
+    <artifactId>caches</artifactId>
     <version>${parent.version}</version>
     <packaging>pom</packaging>
-    <name>Guava Tests - Base</name>
+    <name>Guava Tests - Caches</name>
 
-    <modules>
-        <module>optional</module>
-        <module>preconditions</module>
-        <module>objects</module>
-        <module>throwables</module>
-    </modules>
 
 </project>
