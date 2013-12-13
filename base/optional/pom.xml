@@ -10,7 +10,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>pl.wp.guava-tests.base</groupId>
     <artifactId>optional</artifactId>
     <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>Guava Tests - Base - Optional</name>
 
 </project>
