@@ -1,4 +1,4 @@
-package pl.wp.guava.base.optional;
+package pl.thecookiezen.guava.base.optional;
 
 import com.google.common.base.Optional;
 import org.junit.Test;
