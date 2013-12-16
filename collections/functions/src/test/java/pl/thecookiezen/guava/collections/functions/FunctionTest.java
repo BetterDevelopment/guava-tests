@@ -21,7 +21,7 @@ public class FunctionTest {
 		Function<Integer, Integer> square = new Function<Integer, Integer>() {
 			@Override
 			public Integer apply(@Nullable java.lang.Integer integer) {
-				return null == integer ? 0 : integer * integer;
+				return null == integer ? null : integer * integer;
 			}
 		};
 		Collection<Integer> inputCollection = Arrays.asList(0,1,2,3);
