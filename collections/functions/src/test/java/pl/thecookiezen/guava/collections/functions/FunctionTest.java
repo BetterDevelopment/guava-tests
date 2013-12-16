@@ -2,7 +2,7 @@ package pl.thecookiezen.guava.collections.functions;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Collections2;
-import com.sun.istack.internal.Nullable;
+import javax.annotation.Nullable;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.Test;
