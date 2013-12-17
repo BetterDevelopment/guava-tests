@@ -19,21 +19,21 @@ public class RangesTest {
     @Test
     public void closedRangeShouldContainsLowerAndUpperBound() {
         // given
-        Range<Integer> integerRange = Range.closed(1, 10);
+        Range<Integer> closedFromOneToTen = Range.closed(1, 10);
 
         //then
-        assertThat(integerRange.contains(1), is(true));
-        assertThat(integerRange.contains(10), is(true));
+        assertThat(closedFromOneToTen.contains(1), is(true));
+        assertThat(closedFromOneToTen.contains(10), is(true));
     }
 
     @Test
     public void closedOpenRangeShouldContainsOnlyLowerBound() {
         // given
-        Range<Integer> integerRange = Range.closedOpen(1, 10);
+        Range<Integer> closedOpenFromOneToTen = Range.closedOpen(1, 10);
 
-        //then
-        assertThat(integerRange.contains(1), is(true));
-        assertThat(integerRange.contains(10), is(false));
+        // then
+        assertThat(closedOpenFromOneToTen.contains(1), is(true));
+        assertThat(closedOpenFromOneToTen.contains(10), is(false));
     }
 
     @Test
@@ -42,28 +42,37 @@ public class RangesTest {
         Range<Integer> smallerRange = Range.openClosed(3, 8);
         Range<Integer> range = Range.closed(1, 10);
 
-        //then
-        assertThat(range.encloses(smallerRange), is(true));
+        // when
+        boolean actual = range.encloses(smallerRange);
+
+        // then
+        assertThat(actual, is(true));
     }
 
     @Test
     public void shouldIntersectForOnlyOneNumber() {
         // given
-        Range<Integer> firstRange = Range.closed(3, 5);
-        Range<Integer> secondRange = Range.open(5, 8);
+        Range<Integer> closedFromThreeToFive = Range.closed(3, 5);
+        Range<Integer> openFromFiveToEight = Range.open(5, 8);
 
-        //then
-        assertThat(firstRange.intersection(secondRange), is(Range.openClosed(5, 5)));
+        // when
+        Range<Integer> actual = closedFromThreeToFive.intersection(openFromFiveToEight);
+
+        // then
+        assertThat(actual, is(Range.openClosed(5, 5)));
     }
 
     @Test
     public void shouldIntersectForInnerNumbers() {
         // given
-        Range<Integer> firstRange = Range.closed(2, 9);
-        Range<Integer> secondRange = Range.open(3, 6);
+        Range<Integer> closedFromTwoToNine = Range.closed(2, 9);
+        Range<Integer> openFromThreeToSix = Range.open(3, 6);
 
-        //then
-        assertThat(firstRange.intersection(secondRange), is(Range.open(3, 6)));
+        // when
+        Range<Integer> actual = closedFromTwoToNine.intersection(openFromThreeToSix);
+
+        // then
+        assertThat(actual, is(Range.open(3, 6)));
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -82,8 +91,11 @@ public class RangesTest {
         Range<Integer> firstRange = Range.open(1, 3);
         Range<Integer> secondRange = Range.closed(3, 6);
 
-        //then
-        assertThat(firstRange.isConnected(secondRange), is(true));
+        // when
+        boolean actual = firstRange.isConnected(secondRange);
+
+        // then
+        assertThat(actual, is(true));
     }
 
     @Test
@@ -92,8 +104,11 @@ public class RangesTest {
         Range<Integer> firstRange = Range.open(1, 3);
         Range<Integer> secondRange = Range.open(3, 6);
 
-        //then
-        assertThat(firstRange.isConnected(secondRange), is(false));
+        // when
+        boolean actual = firstRange.isConnected(secondRange);
+
+        // then
+        assertThat(actual, is(false));
     }
 
     @Test
@@ -102,8 +117,11 @@ public class RangesTest {
         Range<Integer> firstRange = Range.open(1, 3);
         Range<Integer> secondRange = Range.open(3, 6);
 
-        //then
-        assertThat(firstRange.span(secondRange), is(Range.open(1, 6)));
+        // when
+        Range<Integer> actual = firstRange.span(secondRange);
+
+        // then
+        assertThat(actual, is(Range.open(1, 6)));
     }
 
     @Test
@@ -127,7 +145,7 @@ public class RangesTest {
         // when
         ImmutableSortedSet<Integer> actualSet = ContiguousSet.create(integerRange, DiscreteDomain.integers());
 
-        //then
+        // then
         assertThat(actualSet, contains(1, 2, 3, 4, 5, 6, 7, 8, 9));
     }
 
