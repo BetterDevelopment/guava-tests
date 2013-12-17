@@ -12,6 +12,8 @@ import static org.hamcrest.Matchers.nullValue;
 import static org.hamcrest.core.Is.is;
 
 /**
+ * https://code.google.com/p/guava-libraries/wiki/CachesExplained
+
  * @author Korneliusz Rabczak
  */
 public class AbstractCacheTest {
@@ -26,7 +28,7 @@ public class AbstractCacheTest {
     };
 
     @Test
-    public void null_should_be_return_for_empty_reference() {
+    public void nullShouldBeReturnForEmptyReference() {
         // when
         Integer actual = cache.getIfPresent("test");
 
@@ -35,7 +37,7 @@ public class AbstractCacheTest {
     }
 
     @Test
-    public void reference_should_be_return() {
+    public void referenceShouldBeReturned() {
         // given
         Integer expected = new Integer(12);
         provider.set(expected);

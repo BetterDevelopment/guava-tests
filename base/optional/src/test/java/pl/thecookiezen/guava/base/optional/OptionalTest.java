@@ -7,12 +7,14 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
 /**
+ * https://code.google.com/p/guava-libraries/wiki/UsingAndAvoidingNullExplained#Optional
+ *
  * @author Korneliusz Rabczak
  */
 public class OptionalTest {
 
     @Test
-    public void optional_integer_should_be_present_and_equals_five() {
+    public void optionalIntegerShouldBePresentAndEqualsFive() {
         // given
         int expected = 5;
 
