@@ -13,7 +13,6 @@
     <groupId>pl.wp.guava-tests.reflection</groupId>
     <artifactId>reflection</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
-    <name>Guava Tests - Reflection</name>
+   <name>Guava Tests - Reflection</name>
 
 </project>

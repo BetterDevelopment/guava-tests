@@ -13,8 +13,6 @@
     <groupId>pl.wp.guava-tests.strings</groupId>
     <artifactId>strings</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
     <name>Guava Tests - Strings</name>
-
 
 </project>

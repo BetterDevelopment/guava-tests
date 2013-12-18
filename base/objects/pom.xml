@@ -13,6 +13,5 @@
     <groupId>pl.wp.guava-tests.base</groupId>
     <artifactId>objects</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
     <name>Guava Tests - Base - Objects</name>
 </project>
