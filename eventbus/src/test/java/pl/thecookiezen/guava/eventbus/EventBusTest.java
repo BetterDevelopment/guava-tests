@@ -16,7 +16,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
  */
 public class EventBusTest {
 
-    private static final EventBus eventBus = new EventBus("test");
+    private final EventBus eventBus = new EventBus("test");
 
     @Test
     public void listenerShouldReceiveSingleStringMessage() {
@@ -44,5 +44,4 @@ public class EventBusTest {
         assertThat(listener.getLastMessage(), is("test message"));
         assertThat(listener.getLastStatus(), is(1337));
     }
-
 }
