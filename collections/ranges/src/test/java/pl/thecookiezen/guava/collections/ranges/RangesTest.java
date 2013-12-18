@@ -4,6 +4,7 @@ import com.google.common.collect.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
@@ -147,6 +148,19 @@ public class RangesTest {
 
         // then
         assertThat(actualSet, contains(1, 2, 3, 4, 5, 6, 7, 8, 9));
+    }
+
+    @Test
+    public void shouldReturnRangeThatEncloseAllNumbersFromArray() {
+        // given
+        List<Integer> numbersList = Lists.newArrayList(51, 234, 11, 9, 1337);
+
+        // when
+        Range<Integer> actual = Range.encloseAll(numbersList);
+
+        //then
+        assertThat(actual.lowerEndpoint(), is(9));
+        assertThat(actual.upperEndpoint(), is(1337));
     }
 
 }
