@@ -16,6 +16,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
  */
 public class EventBusTest {
 
+    public static final String TEST_MESSAGE = "test message";
+    public static final int TEST_NUMERIC_VALUE = 1337;
     private final EventBus eventBus = new EventBus("test");
 
     @Test
@@ -25,37 +27,39 @@ public class EventBusTest {
         eventBus.register(listener);
 
         // when
-        eventBus.post(new TestEvent("test message"));
+        eventBus.post(new TestEvent(TEST_MESSAGE));
 
-        //then
-        assertThat(listener.getLastMessage(), is("test message"));
+        // then
+        assertThat(listener.getLastMessage(), is(TEST_MESSAGE));
     }
 
     @Test
     public void listenerShouldHandleMultipleTypesOfEvents() {
+        // given
         MultipleTypesEventBusChangeRecorder listener = new MultipleTypesEventBusChangeRecorder();
         eventBus.register(listener);
 
         // when
-        eventBus.post(new StringEvent("test message"));
-        eventBus.post(new IntegerEvent(1337));
+        eventBus.post(new StringEvent(TEST_MESSAGE));
+        eventBus.post(new IntegerEvent(TEST_NUMERIC_VALUE));
 
-        //then
-        assertThat(listener.getLastMessage(), is("test message"));
-        assertThat(listener.getLastStatus(), is(1337));
+        // then
+        assertThat(listener.getLastMessage(), is(TEST_MESSAGE));
+        assertThat(listener.getLastStatus(), is(TEST_NUMERIC_VALUE));
     }
 
     @Test
     public void deadEventShouldBeHandle() {
+        // given
         DeadEventBusRecorder listener = new DeadEventBusRecorder();
         eventBus.register(listener);
 
         // when
-        eventBus.post(new String("test message"));
+        eventBus.post(new String(TEST_MESSAGE));
 
-        //then
+        // then
         assertThat(listener.isDeadEventNotDelivered(), is(true));
-        assertThat(listener.getDeadEventMessage(), is("test message"));
+        assertThat(listener.getDeadEventMessage(), is(TEST_MESSAGE));
     }
 
     @Test
@@ -68,10 +72,10 @@ public class EventBusTest {
         eventBus.register(numberListener);
 
         // when
-        eventBus.post(new Integer(15));
+        eventBus.post(new Integer(TEST_NUMERIC_VALUE));
 
-        //then
-        assertThat(integerListener.getLastMessage(), is(15));
-        assertThat(numberListener.getLastMessage(), is((Number) 15));
+        // then
+        assertThat(integerListener.getLastMessage(), is(TEST_NUMERIC_VALUE));
+        assertThat(numberListener.getLastMessage(), is((Number) TEST_NUMERIC_VALUE));
     }
 }
