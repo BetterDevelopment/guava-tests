@@ -44,4 +44,34 @@ public class EventBusTest {
         assertThat(listener.getLastMessage(), is("test message"));
         assertThat(listener.getLastStatus(), is(1337));
     }
+
+    @Test
+    public void deadEventShouldBeHandle() {
+        DeadEventBusRecorder listener = new DeadEventBusRecorder();
+        eventBus.register(listener);
+
+        // when
+        eventBus.post(new String("test message"));
+
+        //then
+        assertThat(listener.isDeadEventNotDelivered(), is(true));
+        assertThat(listener.getDeadEventMessage(), is("test message"));
+    }
+
+    @Test
+    public void listenersShouldHandleSubclassEvents() {
+        // given
+        IntegerListener integerListener = new IntegerListener();
+        NumberListener numberListener = new NumberListener();
+
+        eventBus.register(integerListener);
+        eventBus.register(numberListener);
+
+        // when
+        eventBus.post(new Integer(15));
+
+        //then
+        assertThat(integerListener.getLastMessage(), is(15));
+        assertThat(numberListener.getLastMessage(), is((Number) 15));
+    }
 }
